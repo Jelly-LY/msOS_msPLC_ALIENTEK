@@ -34,14 +34,27 @@
 
 #include "drive.h"
 #include "system.h"
+/*
+Stm32F103R8T6 1Page=1024Byte
+Stm32F103ZEXX 1Page=2048Byte
+小容量产品主存储块1-32KB，每页1KB(1024)。系统存储器2KB。 
 
-#define PageSize                1024 //Stm32F103R8T6 1Page=1024Byte
+中容量产品主存储块64-128KB， 每页1KB(1024)。系统存储器2KB。
+ 
+大容量产品主存储块256KB以上，  每页2KB(2048)。系统存储器2KB。 
+互联型产品主存储块256KB以上，  每页2KB(2048)。系统存储器18KB。
 
-#define ParameterAddress        (FLASH_BASE + (63 * 1024)) 
+Stm32F103R8T6 ->  64K Flash  20K RAM
+Stm32F103ZEXX -> 512K Flash  64K RAM
+*/
+
+#define PageSize                2048 //Stm32F103R8T6 1Page=1024Byte 
+
+#define ParameterAddress        (FLASH_BASE + (510 * 1024)) 
 #define ParameterSpace          PageSize / 4 / 2
 
-#define LogAddress              (FLASH_BASE + (60 * 1024)) 
-#define LogSpace                PageSize * 3
+#define LogAddress              (FLASH_BASE + (506 * 1024)) 
+#define LogSpace                PageSize * 4
 
 typedef struct
 {
