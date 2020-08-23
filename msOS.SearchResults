@@ -1,0 +1,2 @@
+---- GetFloatFrom Matches (1 in 1 files) ----
+System.h (sourcefile\system):#define GetFloatFrom(address)        *((float *)(address)) 
